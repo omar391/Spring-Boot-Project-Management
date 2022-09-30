@@ -1,8 +1,9 @@
 package assignment.springboot.projectmanagement.entities;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -16,12 +17,33 @@ public class Users {
     @Size(message = "Name length must be >=1  and <=20", min = 1, max = 20)
     private String nickName;
 
+
+    @Column(nullable = false, unique = true)
+    @Size(message = "Name length must be >=1  and <=20", min = 1, max = 20)
+    private String userName;
+
+    @NotBlank
+    @NotEmpty
+    @NotNull
+    @Column(nullable = false)
+    private String password;
+
     public Users() {
     }
 
-    public Users(String name) {
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Users(String name, String userName, String password) {
         super();
         this.nickName = name;
+        this.userName = userName;
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 
     public long getId() {

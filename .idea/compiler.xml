@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="todo-management-spring-boot" />
+        <module name="projects-management-spring-boot" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="projects-management-spring-boot" options="-parameters" />
       <module name="todo-management-spring-boot" options="-parameters" />
     </option>
   </component>

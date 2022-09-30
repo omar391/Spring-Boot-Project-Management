@@ -30,7 +30,7 @@ public class Projects {
     @JoinColumn(name = "owner_fk", nullable = false, referencedColumnName = "id")
     private Users ownerObj;
 
-    @Column(nullable = false)
+    @Transient
     private long ownerFk;
 
     @NotNull
@@ -44,12 +44,7 @@ public class Projects {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endDate;
 
-    public long getOwnerFk() {
-        return ownerFk;
-    }
-
     public Projects() {
-        super();
     }
 
     public Projects(String name, String desc, long owner) {
@@ -58,6 +53,10 @@ public class Projects {
         this.intro = desc;
         this.ownerFk = owner;
         this.status = Status.PRE;
+    }
+
+    public long getOwnerFk() {
+        return ownerFk;
     }
 
     public Status getStatus() {
