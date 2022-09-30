@@ -32,13 +32,13 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity createToken(@RequestBody JwtRequestModel request) throws Exception {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.username, request.password));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
-        final Users user = userService.getUser(request.getUsername()).get();
+        final Users user = userService.getUser(request.username).get();
         final String jwtToken = tokenManager.generateJwtToken(createUserDetails(user.getUserName(), user.getPassword()));
         return ResponseEntity.ok(new JwtResponseModel(jwtToken, user.getNickName(), user.getId()));
     }

@@ -9,5 +9,5 @@ public interface IProjectService {
 
     List<Projects> listProjects(int curPageIdx, int countPerPage);
 
-    void createProject(String name, String desc, long ownerId);
+    void createProject(String name, String desc, String owner);
 }

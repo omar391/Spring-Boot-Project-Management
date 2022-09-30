@@ -20,7 +20,7 @@ public class ProjectService implements IProjectService {
     }
 
     @Override
-    public void createProject(String name, String desc, long owner) {
+    public void createProject(String name, String desc, String owner) {
         projectRepository.save(new Projects(name, desc, owner));
     }
 }

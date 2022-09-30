@@ -20,18 +20,19 @@ public class Projects {
     @NotNull(message = "Invalid project name!")
     @Column(nullable = false)
     private String name;
+
     @NotBlank
     @NotEmpty
     @NotNull
     @Size(min = 10, message = "Enter at least 10 Characters...")
     private String intro;
-    @NotNull
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "owner_fk", nullable = false, referencedColumnName = "id")
-    private Users ownerObj;
 
-    @Transient
-    private long ownerFk;
+    @Column(nullable = false)
+    @NotBlank
+    @NotEmpty
+    @NotNull
+    @Size(min = 10, message = "Enter at least 10 Characters...")
+    private String owner;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -47,16 +48,12 @@ public class Projects {
     public Projects() {
     }
 
-    public Projects(String name, String desc, long owner) {
+    public Projects(String name, String desc, String owner) {
         super();
         this.name = name;
         this.intro = desc;
-        this.ownerFk = owner;
+        this.owner = owner;
         this.status = Status.PRE;
-    }
-
-    public long getOwnerFk() {
-        return ownerFk;
     }
 
     public Status getStatus() {
@@ -80,7 +77,7 @@ public class Projects {
     }
 
     public String getOwner() {
-        return ownerObj.getNickName();
+        return owner;
     }
 
     public String getIntro() {

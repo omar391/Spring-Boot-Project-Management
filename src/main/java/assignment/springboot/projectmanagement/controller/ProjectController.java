@@ -37,7 +37,7 @@ public class ProjectController {
 
     @PostMapping("/create")
     public String showAddTodoPage(@RequestBody Project.CreateRequest req) {
-        projService.createProject(req.name, req.desc, req.ownerId);
+        projService.createProject(req.name, req.desc, req.owner);
         return "{msg: 'Project is created successfully!'}";
     }
 }

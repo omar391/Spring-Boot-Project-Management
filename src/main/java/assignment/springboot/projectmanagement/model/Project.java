@@ -7,20 +7,30 @@ import java.util.List;
 public class Project {
 
     public static class CreateRequest {
-        public String name;
-        public String desc;
-        public long ownerId;
+        public final String name;
+        public final String desc;
+        public final String owner;
+        public CreateRequest(String name, String desc, String owner) {
+            this.name = name;
+            this.desc = desc;
+            this.owner = owner;
+        }
     }
 
     public static class ListRequest {
-        public int pageNo;
-        public int count;
+        public final int pageNo;
+        public final int count;
+
+        public ListRequest(int pageNo, int count) {
+            this.pageNo = pageNo;
+            this.count = count;
+        }
     }
 
-    public static class ListResponse{
-        public State state;
-        public String msg;
-        public ListData data;
+    public static class ListResponse {
+        public final State state;
+        public final String msg;
+        public final ListData data;
 
         public ListResponse(State state, String msg, ListData data) {
             this.state = state;
@@ -31,6 +41,7 @@ public class Project {
         public enum State {
             FAILURE(0), SUCCESS(1);
             private final int value;
+
             State(int value) {
                 this.value = value;
             }
@@ -41,9 +52,9 @@ public class Project {
         }
     }
 
-    public static class ListData{
-        public int total;
-        public List<Projects> list;
+    public static class ListData {
+        public final int total;
+        public final List<Projects> list;
 
         public ListData(int total, List<Projects> list) {
             this.total = total;

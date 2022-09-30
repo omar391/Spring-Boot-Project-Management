@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class BaseGenerator {
-
     protected static void initDataSource(DataSourceConfig dataSourceConfig) throws SQLException {
         Connection conn = dataSourceConfig.getConn();
         InputStream inputStream = BaseGenerator.class.getResourceAsStream("/sql/init.sql");
