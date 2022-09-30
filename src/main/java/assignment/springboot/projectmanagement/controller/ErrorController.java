@@ -6,6 +6,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+/*
+* Note: This controller is left for reference only.
+* */
+
 @Controller("error")
 public class ErrorController {
 

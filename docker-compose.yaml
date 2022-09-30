@@ -1,16 +1,16 @@
 version: "3.9"
 
 services:
-  java-app:
-    image: amazoncorretto:8
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./target/:/app
-    entrypoint: sh -c "java -jar /app/projects-management-spring-boot-api-0.0.1-SNAPSHOT.jar"
-    depends_on:
-      db:
-        condition: service_healthy
+#  java-app:
+#    image: openjdk:20-jdk
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./jar/:/jar
+#    entrypoint: java -jar /jar/projects-management-spring-boot-api-0.0.1-SNAPSHOT.jar
+#    depends_on:
+#      db:
+#        condition: service_healthy
 
   pma:
     image: omar391/lamp:latest
